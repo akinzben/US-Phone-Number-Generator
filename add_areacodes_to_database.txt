@@ -1,20 +1,32 @@
 -- phpMyAdmin SQL Dump
--- version 2.9.2
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Generation Time: Jul 03, 2022 at 04:02 PM
--- Server version: 5.0.27
--- PHP Version: 5.2.1
--- 
--- Database: `phone-extractor`
--- 
+-- version 4.9.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 03, 2022 at 12:32 PM
+-- Server version: 10.3.35-MariaDB-log-cll-lve
+-- PHP Version: 7.4.29
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `benjwpmr_genusphone`
+--
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Table structure for table `areacodes`
--- 
+--
 
 CREATE TABLE `areacodes` (
   `area_code` int(3) NOT NULL,
@@ -22,11 +34,11 @@ CREATE TABLE `areacodes` (
   `Description` varchar(256) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- 
+--
 -- Dumping data for table `areacodes`
--- 
+--
 
-INSERT INTO `areacodes` (`area_code`, `Region`, `Description`) VALUES 
+INSERT INTO `areacodes` (`area_code`, `Region`, `Description`) VALUES
 (201, 'NJ', 'N New Jersey: Jersey City, Hackensack '),
 (202, 'DC', 'Washington, D.C.'),
 (203, 'CT', 'Connecticut: Fairfield County and New Haven County; Bridgeport, New Haven '),
@@ -78,7 +90,7 @@ INSERT INTO `areacodes` (`area_code`, `Region`, `Description`) VALUES
 (283, 'OH', 'SW Ohio: Cincinnati '),
 (284, '', 'British Virgin Islands '),
 (289, 'ON', 'Canada: S Cent. Ontario: Greater Toronto Area  Durham, Halton, Hamilton-Wentworth, Niagara, Peel, York, and southern Simcoe County '),
-(301, 'MD', 'W Maryland: Silver Spring, Frederick, Camp Springs, Prince George''s County '),
+(301, 'MD', 'W Maryland: Silver Spring, Frederick, Camp Springs, Prince George\'s County '),
 (302, 'DE', 'Delaware'),
 (303, 'CO', 'Central Colorado: Denver '),
 (304, 'WV', 'West Virginia'),
@@ -330,7 +342,7 @@ INSERT INTO `areacodes` (`area_code`, `Region`, `Description`) VALUES
 (835, 'PA', 'SE Pennsylvania: Allentown, Bethlehem, Reading, West Chester, Norristown '),
 (843, 'SC', 'South Carolina, coastal area: Charleston, Beaufort, Myrtle Beach '),
 (844, '', 'US/Canada toll free '),
-(845, 'NY', 'New York: Poughkeepsie; Nyack, Nanuet, Valley Cottage, New City, Putnam, Dutchess, Rockland, Orange, Ulster and parts of Sullivan counties in New York''s lower Hudson Valley and Delaware County in the Catskills '),
+(845, 'NY', 'New York: Poughkeepsie; Nyack, Nanuet, Valley Cottage, New City, Putnam, Dutchess, Rockland, Orange, Ulster and parts of Sullivan counties in New York\'s lower Hudson Valley and Delaware County in the Catskills '),
 (847, 'IL', 'Northern NE Illinois: northwestern suburbs of chicago '),
 (848, 'NJ', 'Cent. New Jersey: Toms River, New Brunswick, Bound Brook '),
 (850, 'FL', 'Florida panhandle, from east of Tallahassee to Pensacola ; western panhandle  are UTC-6'),
@@ -410,3 +422,86 @@ INSERT INTO `areacodes` (`area_code`, `Region`, `Description`) VALUES
 (985, 'LA', 'E Louisiana: SE/N shore of Lake Pontchartrain: Hammond, Slidell, Covington, Amite, Kentwood, area SW of New Orleans, Houma, Thibodaux, Morgan City '),
 (989, 'MI', 'Upper central Michigan: Mt Pleasant, Saginaw '),
 (999, '', 'Often used by carriers to indicate that the area code information is unavailable for CNID, even though the rest of the number is present');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `states`
+--
+
+CREATE TABLE `states` (
+  `state` varchar(22) NOT NULL,
+  `state_code` char(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `states`
+--
+
+INSERT INTO `states` (`state`, `state_code`) VALUES
+('Alaska', 'AK'),
+('Alabama', 'AL'),
+('Arkansas', 'AR'),
+('Arizona', 'AZ'),
+('California', 'CA'),
+('Colorado', 'CO'),
+('Connecticut', 'CT'),
+('District of Columbia', 'DC'),
+('Delaware', 'DE'),
+('Florida', 'FL'),
+('Georgia', 'GA'),
+('Hawaii', 'HI'),
+('Iowa', 'IA'),
+('Idaho', 'ID'),
+('Illinois', 'IL'),
+('Indiana', 'IN'),
+('Kansas', 'KS'),
+('Kentucky', 'KY'),
+('Louisiana', 'LA'),
+('Massachusetts', 'MA'),
+('Maryland', 'MD'),
+('Maine', 'ME'),
+('Michigan', 'MI'),
+('Minnesota', 'MN'),
+('Missouri', 'MO'),
+('Mississippi', 'MS'),
+('Montana', 'MT'),
+('North Carolina', 'NC'),
+('North Dakota', 'ND'),
+('Nebraska', 'NE'),
+('New Hampshire', 'NH'),
+('New Jersey', 'NJ'),
+('New Mexico', 'NM'),
+('Nevada', 'NV'),
+('New York', 'NY'),
+('Ohio', 'OH'),
+('Oklahoma', 'OK'),
+('Oregon', 'OR'),
+('Pennsylvania', 'PA'),
+('Rhode Island', 'RI'),
+('South Carolina', 'SC'),
+('South Dakota', 'SD'),
+('Tennessee', 'TN'),
+('Texas', 'TX'),
+('Utah', 'UT'),
+('Virginia', 'VA'),
+('Vermont', 'VT'),
+('Washington', 'WA'),
+('Wisconsin', 'WI'),
+('West Virginia', 'WV'),
+('Wyoming', 'WY');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `states`
+--
+ALTER TABLE `states`
+  ADD PRIMARY KEY (`state_code`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
